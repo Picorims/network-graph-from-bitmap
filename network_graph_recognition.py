@@ -339,6 +339,8 @@ if __name__ == "__main__":
     # Save the graph
     with open(f"out/dist_graph_of_{name}.json", "w") as f:
         graph_data = nx.node_link_data(graph)
+        graph_data["width"] = cols
+        graph_data["height"] = rows
         # print(graph_data)
         json.dump(graph_data, f, default=make_serializable)
 
@@ -349,6 +351,8 @@ if __name__ == "__main__":
             # print(u, v, d)
             d["weight"] = d["weight"] / d["speed"] # speed = distance / time => time = distance / speed
         graph_data = nx.node_link_data(speed_graph)
+        graph_data["width"] = cols
+        graph_data["height"] = rows
         # print(graph_data)
         json.dump(graph_data, f, default=make_serializable)
 
